@@ -1,2 +1,2 @@
 # shopApplication
-Shop application from student research group (bit java) 
+Shop application writing on student research group (bit java) meetings with my own modifications 
