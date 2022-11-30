@@ -1,12 +1,12 @@
-package project.ignythe.shopservice.api;
+package project.ignythe.shopservice.api.item;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import project.ignythe.shopservice.domain.item.Item;
 import project.ignythe.shopservice.domain.item.ItemService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,4 +24,11 @@ public class ItemController {
         var items = itemService.list();
         return ResponseEntity.ok(items);
     }
+
+    @PostMapping
+    public ResponseEntity<Item> create(@RequestBody @Valid ItemCreateRequest createRequest) {
+        var createdItem = itemService.create(createRequest);
+        return new ResponseEntity<>(createdItem, HttpStatus.CREATED);
+    }
+
 }
